@@ -1,4 +1,4 @@
-# funcionamieneto del programa
+# funcionamiento del programa
 - Debe de descargar el archivo .zip completo o compiar el código del archivo proyecto.js
 - Si lo descarga deberá de abrir el archivo index.html en cualquier navegador
 - Si solo copio el codigo deberá de pegarlo en un interpretador como https://jsbin.com/?js,output
