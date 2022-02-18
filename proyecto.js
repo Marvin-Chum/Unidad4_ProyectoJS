@@ -21,63 +21,67 @@ var recargo_total = 0
 // PRECIO FINAL
 var precio_final = 0
 
-// MENSAJE DE ALERTA, SOLICITUD DE DATOS, Y CONVIRTIENDOD EDAD A NÚMERO
-var nombre = prompt("Ingrese su nombre, por favor ")
-var edad = parseInt(prompt("¿Cuantos años tiene? Ingrese solamente números "))
+var salir = "SI"
 
-var casado = prompt("¿Está casado(a) actualmente? ")
-// COMPROBACIÓN EDAD CÓNYUGE, SOLO SI ESTA CASADO(A) Y CONVIRTIENDO VAR A NÚMERO
-var edad_conyuge
-if ("SI" == casado.toUpperCase()) {
-  edad_conyuge = parseInt(prompt("¿Que edad tiene su esposo(a)? "))
-}
+while ("NO" != salir.toUpperCase()) {
+  // MENSAJE DE ALERTA, SOLICITUD DE DATOS, Y CONVIRTIENDOD EDAD A NÚMERO
+  var nombre = prompt("Ingrese su nombre, por favor ")
+  var edad = parseInt(prompt("¿Cuantos años tiene? Ingrese solamente números "))
 
-var hijos = prompt("¿Tiene hijos o hijas? ")
-// COMPROBACIÓN CANTIDAD HIJOS, SOLO SI LOS TIENE, CONVIRTIENDO VAR A NÚMERO
-// Y RECARGO POR LA CANTIDAD DE HIJOS
-var cantidad_hijos
-if ("SI" == hijos.toUpperCase()) {
-  cantidad_hijos = parseInt(prompt("¿Cuántos hijos tiene? Ingrese solamente números "))
-  recargo_hijos = cantidad_hijos * precio_base * hijos_recargo
-}
+  var casado = prompt("¿Está casado(a) actualmente? ")
+  // COMPROBACIÓN EDAD CÓNYUGE, SOLO SI ESTA CASADO(A) Y CONVIRTIENDO VAR A NÚMERO
+  var edad_conyuge
+  if ("SI" == casado.toUpperCase()) {
+    edad_conyuge = parseInt(prompt("¿Que edad tiene su esposo(a)? "))
+  }
 
-// RECARGO POR LA EDAD DEL ASEGURADO
-if (edad >= 18 && edad <25) {
-  recargo_asegurado = precio_base * edad_18
-} else if (edad >= 25 && edad <50) {
-  recargo_asegurado = precio_base * edad_25
-} else if (edad >= 50) {
-  recargo_asegurado = precio_base * edad_50
-}
+  var hijos = prompt("¿Tiene hijos o hijas? ")
+  // COMPROBACIÓN CANTIDAD HIJOS, SOLO SI LOS TIENE, CONVIRTIENDO VAR A NÚMERO
+  // Y RECARGO POR LA CANTIDAD DE HIJOS
+  var cantidad_hijos
+  if ("SI" == hijos.toUpperCase()) {
+    cantidad_hijos = parseInt(prompt("¿Cuántos hijos tiene? Ingrese solamente números "))
+    recargo_hijos = cantidad_hijos * precio_base * hijos_recargo
+  }
 
-// RECARGO POR LA EDAD DEL CÓNYUGE
-if (edad_conyuge >= 18 && edad_conyuge <25) {
-  recargo_conyuge = precio_base * casado_18
-}  else if (edad_conyuge >= 25 && edad_conyuge <50) {
-  recargo_conyuge = precio_base * casado_25
-} else if (edad_conyuge >= 50) {
-  recargo_conyuge = precio_base * casado_50
-}
+  // RECARGO POR LA EDAD DEL ASEGURADO
+  if (edad >= 18 && edad <25) {
+    recargo_asegurado = precio_base * edad_18
+  } else if (edad >= 25 && edad <50) {
+    recargo_asegurado = precio_base * edad_25
+  } else if (edad >= 50) {
+    recargo_asegurado = precio_base * edad_50
+  }
 
-// FUNCIÓN, OPERACIÓN DEL PRECIO FINAL Y MENSAJE DE LA COTIZACIÓN
-function cotizacion() {
-  precio_final = precio_base + recargo_total
-  alert("Para el asegurado " + nombre + "\n" +
-  "Q." + recargo_total + " Recargo total" + "\n" +
-  "Q." + precio_final + " Precio Final de la cotización")
-}
+  // RECARGO POR LA EDAD DEL CÓNYUGE
+  if (edad_conyuge >= 18 && edad_conyuge <25) {
+    recargo_conyuge = precio_base * casado_18
+  }  else if (edad_conyuge >= 25 && edad_conyuge <50) {
+    recargo_conyuge = precio_base * casado_25
+  } else if (edad_conyuge >= 50) {
+    recargo_conyuge = precio_base * casado_50
+  }
 
-// RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS Y LLAMADO A LA FUNCIÓN COTIZACIÓN
-if ("SI" == casado.toUpperCase() && "SI" == hijos.toUpperCase()) {
-  recargo_total = recargo_asegurado + recargo_conyuge + recargo_hijos
-  cotizacion()
-} else if ("SI" == casado.toUpperCase()) {
-  recargo_total = recargo_asegurado + recargo_conyuge
-  cotizacion()
-} else if ("SI" == hijos.toUpperCase()) {
-  recargo_total = recargo_asegurado + recargo_hijos
-  cotizacion()
-} else {
-  recargo_total = recargo_asegurado
-  cotizacion()
+  // FUNCIÓN, OPERACIÓN DEL PRECIO FINAL Y MENSAJE DE LA COTIZACIÓN
+  function cotizacion() {
+    precio_final = precio_base + recargo_total
+    alert("Para el asegurado " + nombre + "\n" +
+    "Q." + recargo_total + " Recargo total" + "\n" +
+    "Q." + precio_final + " Precio Final de la cotización")
+  }
+
+  // RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS Y LLAMADO A LA FUNCIÓN COTIZACIÓN
+  if ("SI" == casado.toUpperCase() && "SI" == hijos.toUpperCase()) {
+    recargo_total = recargo_asegurado + recargo_conyuge + recargo_hijos
+    cotizacion()
+  } else if ("SI" == casado.toUpperCase()) {
+    recargo_total = recargo_asegurado + recargo_conyuge
+    cotizacion()
+  } else if ("SI" == hijos.toUpperCase()) {
+    recargo_total = recargo_asegurado + recargo_hijos
+    cotizacion()
+  } else {
+    recargo_total = recargo_asegurado
+    cotizacion()
+  } salir = prompt("Deseas realizar una nueva cotización")
 }
