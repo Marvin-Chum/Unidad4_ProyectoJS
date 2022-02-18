@@ -62,9 +62,9 @@ if (edad_conyuge >= 18 && edad_conyuge <25) {
 // FUNCIÓN, OPERACIÓN DEL PRECIO FINAL Y MENSAJE DE LA COTIZACIÓN
 function cotizacion() {
   precio_final = precio_base + recargo_total
-  alert(("Para el asegurado" + nombre),
-  ("Q." + recargo_total + " Recargo total"),
-  ("Q." + recargo_total + " Precio Final de la cotización"))
+  alert("Para el asegurado " + nombre + "\n" +
+  "Q." + recargo_total + " Recargo total" + "\n" +
+  "Q." + precio_final + " Precio Final de la cotización")
 }
 
 // RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS Y LLAMADO A LA FUNCIÓN COTIZACIÓN
