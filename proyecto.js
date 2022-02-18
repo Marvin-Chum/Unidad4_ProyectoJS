@@ -59,8 +59,15 @@ if (edad_conyuge >= 18 && edad_conyuge <25) {
   recargo_conyuge = precio_base * casado_50
 }
 
-// RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS
-var recargo_total
+// FUNCIÓN, OPERACIÓN DEL PRECIO FINAL Y MENSAJE DE LA COTIZACIÓN
+function cotizacion() {
+  precio_final = precio_base + recargo_total
+  alert(("Para el asegurado" + nombre),
+  ("Q." + recargo_total + " Recargo total"),
+  ("Q." + recargo_total + " Precio Final de la cotización"))
+}
+
+// RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS Y LLAMADO A LA FUNCIÓN COTIZACIÓN
 if ("SI" == casado.toUpperCase() && "SI" == hijos.toUpperCase()) {
   recargo_total = recargo_asegurado + recargo_conyuge + recargo_hijos
 } else if ("SI" == casado.toUpperCase()) {
@@ -70,11 +77,3 @@ if ("SI" == casado.toUpperCase() && "SI" == hijos.toUpperCase()) {
 } else {
   recargo_total = recargo_asegurado
 }
-
-// PRECIO FINAL
-precio_final = precio_base + recargo_total
-
-// RESULTADO
-alert ("Para el asegurado "+nombre)
-alert ("El recargo total sera de: "+recargo_total)
-alert (`El precio final de la cotización es ${precio_final}`)
