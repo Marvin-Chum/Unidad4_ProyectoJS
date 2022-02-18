@@ -70,10 +70,14 @@ function cotizacion() {
 // RECARGO TOTAL BASADO EN LAS RESPUESTAS INGRESADAS Y LLAMADO A LA FUNCIÓN COTIZACIÓN
 if ("SI" == casado.toUpperCase() && "SI" == hijos.toUpperCase()) {
   recargo_total = recargo_asegurado + recargo_conyuge + recargo_hijos
+  cotizacion()
 } else if ("SI" == casado.toUpperCase()) {
   recargo_total = recargo_asegurado + recargo_conyuge
+  cotizacion()
 } else if ("SI" == hijos.toUpperCase()) {
   recargo_total = recargo_asegurado + recargo_hijos
+  cotizacion()
 } else {
   recargo_total = recargo_asegurado
+  cotizacion()
 }
