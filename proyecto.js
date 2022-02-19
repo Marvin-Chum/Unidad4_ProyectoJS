@@ -40,8 +40,8 @@ while ("NO" != salir.toUpperCase()) {
     if ("SI" == casado.toUpperCase()) {
       edad_conyuge = parseInt(prompt("¿Que edad tiene su esposo(a)? Igrese solo números "))
       // CONDICION PARA VALIDAR SI CONYUGE ES ACEPTABLE AL SEGURO
-      if (edad_conyuge < 18) {
-        alert("Su esposo(a) no cumple con la edad mínima para ser agregado(a) al seguro")
+      if (edad_conyuge < 18 || isNaN(edad_conyuge)) {
+        alert("Su esposo(a) no cumple con la edad mínima para ser agregado(a) al seguro, o ya sea que no ingreso un número válido")
       }
     }
   
@@ -51,9 +51,13 @@ while ("NO" != salir.toUpperCase()) {
     var cantidad_hijos
     if ("SI" == hijos.toUpperCase()) {
       cantidad_hijos = parseInt(prompt("¿Cuántos hijos tiene? Ingrese solo números "))
-      recargo_hijos = cantidad_hijos * precio_base * hijos_recargo
+      if (isNaN(cantidad_hijos)) {
+        alert("No ha ingresado un número válido")
+        recargo_hijos = 0
+      } else {
+        recargo_hijos = cantidad_hijos * precio_base * hijos_recargo
+      }
     }
-  
     // RECARGO POR LA EDAD DEL ASEGURADO
     if (edad >= 18 && edad <25) {
       recargo_asegurado = precio_base * edad_18
